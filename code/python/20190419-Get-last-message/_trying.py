@@ -1,26 +1,34 @@
-global last_time
+import time
 
-last_time = system_time
 
-def getLastMsg(msg_dict, system_time, gap):
+# last_time = system_time
+result = []
 
-    global last_time
+msg_dict = [{"time": 1555668228996, "content": "最新消息"}]
 
-    if system_time > (last_time + gap):
-        last_time = system_time - gap
 
-    elif msg_dict[0]['time'] == last_time:
-        pass
+def getMST():    
+    return int(time.time()*1000)
 
-    elif msg_dict[0]['time'] < last_time:
-        pass
+print(getMST())
 
-    if msg_dict[0]['time'] > last_time:
+# if system_time > (last_time + gap):
+#     last_time = system_time - gap
 
-        for msg in msg_dict:
-            if msg['time'] <= last_time:
-                continue
+# elif msg_dict[0]['time'] == last_time:
+#     pass
 
-            result.append(msg['content'])
+# elif msg_dict[0]['time'] < last_time:
+#     pass
 
-    last_time = msg_dict[0]['time']
+# if msg_dict[0]['time'] > last_time:
+
+#     for msg in msg_dict:
+#         if msg['time'] <= last_time:
+#             continue
+
+#         result.append(msg['content'])
+
+# last_time = msg_dict[0]['time']
+
+# print(result)
