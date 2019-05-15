@@ -1,15 +1,14 @@
 import json, time
 
-def whatever(data_dict, start_ts, end_ts, gap_ts):
+def increment2TimeSeries(data_dict, start_ts, end_ts, gap_ts):
     # 变量初始化
     i = 0
     value_count = 0.0
-    result = [{'ts': start_ts, 'value': 0.0}]
+    result = []
     # 数据按时间戳增加排序
-    data_dict = sorted(data_dict, key=lambda e: e.__getitem__('ts'))
-
+    data_dict = sorted(data_dict, key = lambda e: e.__getitem__('ts'))
+    # 生成时间序列
     for ts in range(start_ts, end_ts, gap_ts):
-
         while i < len(data_dict):
             # 避免下标越界
             if (data_dict[i]['ts'] >= ts and data_dict[i]['ts'] < (ts + gap_ts)):
@@ -33,5 +32,5 @@ if __name__ == '__main__':
         {'ts': 1030, 'value': 9.25}
     ]
 
-    result = whatever(data, 1000, 1050, 3)
+    result = increment2TimeSeries(data, 1000, 1050, 3)
     print(json.dumps(result))
