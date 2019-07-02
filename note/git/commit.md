@@ -92,3 +92,42 @@
 
 
 
+### 分支处理
+
+#### 配置远程仓库
+
+```
+git remote add origin https://github.com/user/repo-name.git
+```
+
+#### 克隆单个分支
+
+```
+git clone -b branchName https://github.com/user/repo-name.git
+```
+
+#### 推送本地仓库到远程分支
+
+>  一般远程主机名为`origin`，本地分支名为`master`
+
+```
+git push <远程主机名> <本地分支名>:<远程分支名>
+```
+
+
+
+### GitHub配置
+
+#### 更改hosts以解决Clone速度过慢的问题
+
+```
+151.101.113.194 github.global.ssl.fastly.net 
+192.30.253.112 github.com 
+```
+
+
+
+### 引用
+
+1. 分支项目的单个处理：<https://blog.csdn.net/she_lock/article/details/79453484>
+2. 本地项目推送远程分支：<https://blog.csdn.net/qq827245563/article/details/82466521>
