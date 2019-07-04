@@ -92,17 +92,41 @@
 
 
 
+### 删除文件相关操作
+
+#### 删除本地文件
+
+```bash
+git rm <filename>
+```
+
+#### 删除文件并修改Git仓库/分支
+
+```bash
+git rm --cached <filename>
+```
+
+这个操作可以删除暂存区或分支上的文件，但是保留本地文件，只是不被版本控制。在下次commit的时候会修改Git仓库。
+
+以上操作，如果要处理的是文件夹可以写为：
+
+```bash
+git rm -r <folder_name>
+```
+
+
+
 ### 分支处理
 
 #### 配置远程仓库
 
-```
+```bash
 git remote add origin https://github.com/user/repo-name.git
 ```
 
 #### 克隆单个分支
 
-```
+```bash
 git clone -b branchName https://github.com/user/repo-name.git
 ```
 
@@ -110,19 +134,8 @@ git clone -b branchName https://github.com/user/repo-name.git
 
 >  一般远程主机名为`origin`，本地分支名为`master`
 
-```
+```bash
 git push <远程主机名> <本地分支名>:<远程分支名>
-```
-
-
-
-### GitHub配置
-
-#### 更改hosts以解决Clone速度过慢的问题
-
-```
-151.101.113.194 github.global.ssl.fastly.net 
-192.30.253.112 github.com 
 ```
 
 
