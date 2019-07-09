@@ -140,6 +140,40 @@ git push <远程主机名> <本地分支名>:<远程分支名>
 
 
 
+### 将本地的Git项目同步到远程Git仓库
+
+首先有了本地和远程的仓库，配置完成SSH key。
+
+进入本地的仓库，执行命令关联远程仓库：
+
+```bash
+git remote and origin <远程仓库地址>
+```
+
+（远程仓库地址使用HTTPS或SSH均可）
+
+然后将本地所有内容推送到远程仓库：
+
+```bash
+git push -u origin master
+```
+
+（注意不要仅仅执行`git push`，这样是无法完全同步的）
+
+如果有遇到问题强制覆盖即可
+
+```bash
+git push -u origin master --force
+```
+
+
+
+
+
+---
+
+
+
 ### 引用
 
 1. 分支项目的单个处理：<https://blog.csdn.net/she_lock/article/details/79453484>
