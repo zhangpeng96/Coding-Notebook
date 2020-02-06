@@ -2,7 +2,7 @@
 
 ### SVN 与 Git 的区别
 
-Subversion(SVN) 是一个开源的版本控制系統，与Git的区别在于Git是分布式版本控制，而SVN是集中式版本控制。相应的，SVN的操作、指令要比Git简化的多，而且没有Git的“暂存区”概念。
+Subversion(SVN) 是一个开源的版本控制系统，与Git的区别在于Git是分布式版本控制，而SVN是集中式版本控制。相应的，SVN的操作、指令要比Git简化的多，而且没有Git的“暂存区”概念。
 
 ### SVN 检出操作（类似 Git 的 Clone）
 
@@ -13,9 +13,9 @@ A    repo/docs
 A    repo/builds
 ```
 
-### SVN 修改、更新操作（类似 Git 的 add、commit）
+### SVN 修改、更新操作（类似 Git 的 Add、Commit）
 
-与Git不同，SVN没有暂存区，所以修改后的文件可以直接Commit提交。对于新增的文件改动，需要执行`add`操作。
+与Git不同，SVN没有暂存区，所以修改后的文件可以直接`Commit`提交。对于新增的文件改动，需要执行`add`操作。
 
 ```
 > svn add *
@@ -48,12 +48,12 @@ A  (bin)  src\splash.jpg
 
 ### SVN UPDATE操作
 
-与Git不同，SVN在Commit操作后将改动传输给主（远程）仓库，之后需要进行update操作拉取主（远程）仓库的版本信息，使本地信息与之同步。
+与Git不同，SVN在`Commit`操作后将改动传输给主（远程）仓库，之后需要进行`update`操作拉取主（远程）仓库的版本信息，使本地信息与之同步。
 
 ```shell
 > svn update
 正在升级 '.':
-版本 4。
+版本 3。
 ```
 
 ### SVN 其它指令
@@ -62,3 +62,8 @@ A  (bin)  src\splash.jpg
 
 **info**：查看SVN仓库的详细信息，如副本目录、主仓库（版本库根）、最后修改的信息等等
 
+
+
+---
+
+1. 菜鸟教程：SVN 检出操作   https://www.runoob.com/svn/svn-check-out.html
