@@ -35,6 +35,7 @@
 - Git
   - 命令
     - [commit](Note/Git/命令/commit)
+    - [tag](Note/Git/命令/tag)
   - [GitHub常用操作](Note/Git/GitHub常用操作)
 - SVN
   - [SVN基本操作](Note/SVN/SVN基本操作)
