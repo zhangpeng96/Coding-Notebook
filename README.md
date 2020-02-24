@@ -19,6 +19,7 @@
     - [imgaug](Code/Python/Package/imgaug)
   - 工具（Tool）
     - [生成、使用requirements](Code/Python/Tool/生成、使用requirements)
+    - [pip失效时的解决方案](Code/Python/Tool/pip失效时的解决方案.md)
   - [时间相关](Code/Python/时间相关)
   - [数据库相关](Code/Python/数据库相关)
   - [数组、字典相关](Code/Python/数组、字典相关)
