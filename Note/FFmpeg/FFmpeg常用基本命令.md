@@ -122,6 +122,24 @@ ffmpeg -i "rtmp://192.168.10.103:1935/live/111 live=1" -acodec copy -vcodec copy
 
 
 
+### 屏幕录制
+
+#### 录制当前屏幕
+
+```bash
+ffmpeg -f gdigrab -framerate 10 -i desktop output.mkv
+```
+
+#### 录制指定窗口
+
+比如录制计算器 Calculator
+
+```bash
+ffmpeg -f gdigrab -framerate 25 -i title=Calculator output.mkv
+```
+
+
+
 
 
 ### 参考链接
