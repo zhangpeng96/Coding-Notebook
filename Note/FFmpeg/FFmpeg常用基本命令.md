@@ -92,23 +92,66 @@ ffmpeg -i input.flv output.mp4
 
 
 
-### 混缩与提取
+### 混缩与提取（无损）
 
-#### 合并音频和视频
+### 合并音频和视频
 
 ```bash
-ffmpeg -i videoplayback.mp4 -i videoplayback.webm -c:v copy output.mp4
+ffmpeg -i video.mp4 -i audio.m4a -c:v copy output.mp4
 ```
 #### 提取音频文件
 
 ```bash
-ffmpeg -i input.mp4 -vn -ab 256k outputaudio.m4a
+ffmpeg -i input.mp4 -vn -acodec copy audio.m4a
 ```
 #### 提取视频文件
 
 ```bash
-ffmpeg -i input.mp4 -an output.mp4
+ffmpeg -i input.mp4 -an -vcodec copy video.mp4
 ```
+
+#### 提取字幕文件
+
+```bash
+ffmpeg -i input.mp4 -map 0:s:0 subtitle.srt
+```
+
+#### 获取多音轨视频文件的各个音轨
+
+先用 FFmpeg 查看视频文件信息
+
+```
+# ffmpeg -i input.mpg 
+Input #0, mpeg, from 'input.mpg ':  
+  Duration: 00:00:32.32, start: 245.117611, bitrate: 8581 kb/s  
+    Stream #0.0[0x1e0]: Video: mpeg2video, yuv420p, 720x480 [PAR 32:27 DAR 16:9], 9800 kb/s, 59.94 tbr, 90k tbn, 59.94 tbc  
+    Stream #0.1[0x31]: Subtitle: dvdsub  
+    Stream #0.2[0x81]: Audio: ac3, 48000 Hz, 5.1, s16, 384 kb/s  
+    Stream #0.3[0x82]: Audio: ac3, 48000 Hz, 5.1, s16, 384 kb/s  
+    Stream #0.4[0x80]: Audio: ac3, 48000 Hz, 5.1, s16, 448 kb/s  
+    Stream #0.5[0x83]: Audio: ac3, 48000 Hz, stereo, s16, 160 kb/s  
+    Stream #0.6[0x84]: Audio: ac3, 48000 Hz, stereo, s16, 160 kb/s  
+    Stream #0.7[0x85]: Audio: ac3, 48000 Hz, stereo, s16, 192 kb/s  
+    Stream #0.8[0x2d]: Subtitle: dvdsub  
+    Stream #0.9[0x2e]: Subtitle: dvdsub  
+    Stream #0.10[0x2f]: Subtitle: dvdsub  
+    Stream #0.11[0x24]: Subtitle: dvdsub  
+    Stream #0.12[0x30]: Subtitle: dvdsub  
+    Stream #0.13[0x2a]: Subtitle: dvdsub  
+    Stream #0.14[0x2b]: Subtitle: dvdsub  
+    Stream #0.15[0x2c]: Subtitle: dvdsub  
+    Stream #0.16[0x23]: Subtitle: dvdsub  
+```
+
+audio`%d`.wav (2-7) 即是输出的几个音轨的音频文件。
+```bash
+ffmpeg -i input.mpg -map 0:2 audio2.wav
+ffmpeg -i input.mpg -map 0:3 audio3.wav
+ffmpeg -i input.mpg -map 0:4 audio4.wav
+...
+ffmpeg -i input.mpg -map 0:7 audio7.wav
+```
+
 
 
 
@@ -145,3 +188,4 @@ ffmpeg -f gdigrab -framerate 25 -i title=Calculator output.mkv
 ### 参考链接
 
 - ffmpeg linux 命令 在线中文手册：<http://linux.51yip.com/search/ffmpeg>
+- https://blog.csdn.net/achang21/article/details/49128785
