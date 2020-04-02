@@ -2,7 +2,7 @@
 
 
 
-### 撤销到某个commit（已经同步到GitHub上）
+### 撤销到某个 commit（已经同步到远程仓库上）
 
 1. 首先查询 commit ID，如现在要丢掉`ADD SNH48-GroupSoul`，那么就回退到`commit ec84c0c109063f5bc3ee158a583888de1d5cd871`
 
@@ -115,6 +115,14 @@ git rm -r <folder_name>
 ```
 
 
+
+### commit 提交其它信息
+
+#### 指定 commit 的时间戳
+
+```
+git commit --date="2020-03-19 17:21:00 +0800" -am "修改"
+```
 
 ### 分支处理
 
