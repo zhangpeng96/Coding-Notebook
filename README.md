@@ -48,6 +48,7 @@
 - [SVN 基本操作](Note/SVN/SVN基本操作)
 
 #### Nginx
+- [Nginx 编译 IPv6](Note/Nginx/Nginx编译IPv6)
 - [Nginx 转发配置](Note/Nginx/Nginx转发配置)
 
 #### FFmpeg
