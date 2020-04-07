@@ -59,6 +59,7 @@
 #### Linux
 - CentOS
   - [CentOS 7 添加用户并授权](Note/Linux/CentOS/CentOS7添加用户并授权) 
+  - [CentOS 7 环境下部署 Typecho 并处理权限问题](Note/Linux/CentOS/CentOS7环境部署Typecho并处理权限问题)
 
 #### Windows
 - UWP
