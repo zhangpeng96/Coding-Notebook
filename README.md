@@ -44,6 +44,7 @@
   - [commit](Note/Git/命令/commit)
   - [tag](Note/Git/命令/tag)
 - [GitHub 常用操作](Note/Git/GitHub常用操作)
+- [使用 SSH 密钥登录 Git 托管平台](Note/Git/使用SSH密钥登录)
 
 #### SVN
 - [SVN 基本操作](Note/SVN/SVN基本操作)
