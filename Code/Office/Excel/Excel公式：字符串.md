@@ -1,8 +1,8 @@
-# Excel 公式
+# Excel 字符串相关公式
 
 
 
-#### 将timestamp转换为Excel日期时间格式
+#### 将 timestamp 转换为 Excel 日期时间格式
 
 ```
 =(A1+8*3600)/86400+70*365+19

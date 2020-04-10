@@ -59,9 +59,6 @@ yum install ffmpeg
 ```
 
 
-
-
-
 ### 参考链接
 
 - centos7下yum安装ffmpeg <https://www.jianshu.com/p/5806c9879df9>

@@ -1,5 +1,3 @@
-
-
 # Nginx 编译使用 IPv6
 
 ### 检查现有 Nginx 是否支持 IPv6

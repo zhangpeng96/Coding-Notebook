@@ -72,12 +72,10 @@ if __name__ == '__main__':
 
 
 
-## 参考链接
+### 参考链接
 
-- 可能与 WSGI 的异常捕获无效有关：https://github.com/mopemope/meinheld/issues/96
-- 消息捕获迂回解决方法（未尝试）：https://github.com/getsentry/sentry-python/issues/149#issuecomment-434448781
-
-- CherryPy 示例：https://helpful.knobs-dials.com/index.php/General_WSGI_notes
-- CherryPy 不含 WSGI 的原因查找：https://stackoverflow.com/questions/59372836/python-importerror-cannot-import-name-wsgiserver
-
-- 推荐可用的 WSGI 调用：https://stackoverflow.com/questions/55366395/how-to-run-a-flask-app-on-cherrypy-wsgi-server-cheroot-using-https
+- 可能与 WSGI 的异常捕获无效有关：<https://github.com/mopemope/meinheld/issues/96>
+- 消息捕获迂回解决方法（未尝试）：<https://github.com/getsentry/sentry-python/issues/149#issuecomment-434448781>
+- CherryPy 示例：<https://helpful.knobs-dials.com/index.php/General_WSGI_notes>
+- CherryPy 不含 WSGI 的原因查找：<https://stackoverflow.com/questions/59372836/python-importerror-cannot-import-name-wsgiserver>
+- 推荐可用的 WSGI 调用：<https://stackoverflow.com/questions/55366395/how-to-run-a-flask-app-on-cherrypy-wsgi-server-cheroot-using-https>

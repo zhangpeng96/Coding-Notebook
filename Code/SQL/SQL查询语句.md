@@ -1,12 +1,12 @@
-# SQL查询语句
+# SQL 查询语句
 
 
 
-### 将GROUP分组后的多条数据的单个字段合并为一条数据
+### 将 GROUP 分组后的多条数据的单个字段合并为一条数据
 
 #### 示例数据
 
-#### 用GROUP_CONCAT函数合并
+#### 用 GROUP_CONCAT 函数合并
 
 `GROUP_CONCAT([DISTINCT] 要连接的字段 [ORDER BY ASC/DESC 排序字段] [separator '分隔符'])`
 

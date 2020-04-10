@@ -1,6 +1,7 @@
-# `imgaug`库安装报错
+# imgaug
 
-### 报错信息
+### 安装报错
+#### 报错信息
 
     Complete output from command python setup.py egg_info:
     Traceback (most recent call last):
@@ -15,15 +16,13 @@
     OSError: [WinError 126] 找不到指定的模块。
     
     Command "python setup.py egg_info" failed with error code 1 in C:\Users\sjiao\AppData\Local\Temp\pip-install-yryv4tgs\Shapely\
-### 错误原因
+#### 错误原因
 
-`imgaug`依赖的`shapely`安装失败或不正确
+imgaug 依赖的 shapely 安装失败或不正确
 
-### 解决方案
+#### 解决方案
 
-[^1]: <https://blog.csdn.net/qq_16065939/article/details/85080630>
-
-下载对应Python版本的`Shapely`，可以在<https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely>查询、下载
+下载对应Python版本的 Shapely，可以在<https://www.lfd.uci.edu/~gohlke/pythonlibs/#shapely>查询、下载
 
 ```
 Shapely, a package for creation, manipulation, and analysis of planar geometry objects based on GEOS.
@@ -46,7 +45,7 @@ Installing collected packages: Shapely
 Successfully installed Shapely-1.6.4.post1
 ```
 
-安装成功，再次尝试安装`imgaug`即可
+安装成功，再次尝试安装 imgaug 即可
 
 ```
 PS D:\> pip install imgaug
@@ -57,7 +56,8 @@ Installing collected packages: imgaug
 Successfully installed imgaug-0.2.9
 ```
 
-
+### 参考链接
+- <https://blog.csdn.net/qq_16065939/article/details/85080630>
 
 
 

@@ -42,5 +42,5 @@ $ cat id_rsa.pub
 
 ### 参考链接
 
-- https://blog.csdn.net/zhangpeterx/article/details/97375233
-- https://stackoverflow.com/questions/17668283/failed-to-add-the-host-to-the-list-of-know-hosts
+- <https://blog.csdn.net/zhangpeterx/article/details/97375233>
+- <https://stackoverflow.com/questions/17668283/failed-to-add-the-host-to-the-list-of-know-hosts>

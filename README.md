@@ -7,61 +7,57 @@
 
 #### Office
 - Excel
-  - [Excel 公式：时间](Code/Office/Excel/Excel公式：时间)
-  - [Excel 公式：字符串](Code/Office/Excel/Excel公式：字符串)
+  - [Excel 字符串相关公式](Code/Office/Excel/Excel公式：字符串)
+  - [Excel 时间相关公式](Code/Office/Excel/Excel公式：时间)
 
 #### PHP
-- [多维数组转换为一维数组](https://github.com/zhangpeng96/Coding-Notebook/blob/master/Code/PHP/多维数组转换为一维数组.php)
-- 错误类型速查（Error）
-  - [PHP 报错解决：网络](Code/PHP/Error/PHP报错解决：网络)
+- [PHP 常见报错解决](Code/PHP/PHP常见报错解决)
 
 #### Python
-- 包（Package）
-  - [Python 不常用包功能简述](Code/Python/Package/summary) 
+- Package
   - [dlib](Code/Python/Package/dlib)
   - [imgaug](Code/Python/Package/imgaug)
-  - [WSGI 服务器相关包](Code/Python/Package/wsgi) 
-- 工具（Tool）
-  - [生成 requirements](Code/Python/Tool/生成、使用requirements)
-  - [pip 失效时的解决方案](Code/Python/Tool/pip失效时的解决方案)
-- [时间相关](Code/Python/时间相关)
-- [数据库相关](Code/Python/数据库相关)
-- [数据类型相关](Code/Python/数据类型相关) 
-- [数组/字典相关](Code/Python/数组、字典相关)
-- [HTML/XML相关](Code/Python/HTML、XML相关)
+  - [Python 不常用包简述](Code/Python/Package/summary)
+  - [WSGI 服务器相关包](Code/Python/Package/wsgi)
+- [DOM 解析相关用法](Code/Python/DOM解析相关)
+- [PIP 失效时的解决方案](Code/Python/pip失效解决)
+- [Requirements 相关用法](Code/Python/requirements相关)
+- [Python 数据库相关](Code/Python/数据库相关)
+- [Python 数据类型相关用法](Code/Python/数据类型相关)
+- [Python 时间相关用法](Code/Python/时间相关)
 
 #### SQL
-- [SQL 查询语句](Code/SQL/SQL查询语句)
+- [SQL 删除语句](Code/SQL/SQL删除语句)
 - [SQL 更新语句](Code/SQL/SQL更新语句)
-- [SQL 删除语句](Code/SQL/SQL删除语句) 
-
+- [SQL 查询语句](Code/SQL/SQL查询语句)
 
 ### 笔记（Note）
 
+#### FFmpeg
+- [FFmpeg 安装](Note/FFmpeg/FFmpeg安装方法)
+- [FFmpeg 常用命令](Note/FFmpeg/FFmpeg常用命令)
 
 #### Git
-- 命令
-  - [commit](Note/Git/命令/commit)
-  - [tag](Note/Git/命令/tag)
+- [Commit 操作](Note/Git/Commit操作)
 - [GitHub 常用操作](Note/Git/GitHub常用操作)
+- [Tag 操作](Note/Git/Tag操作)
 - [使用 SSH 密钥登录 Git 托管平台](Note/Git/使用SSH密钥登录)
+- 命令
+
+#### Linux
+- CentOS
+  - [CentOS 7 添加用户并授权 root 权限](Note/Linux/CentOS/CentOS7添加用户并授权)
+  - [CentOS 7 环境下部署 Typecho 并处理权限问题](Note/Linux/CentOS/CentOS7部署Typecho并限权)
+- Kernel
+  - [Linux 系统权限详解](Note/Linux/Kernel/Linux权限详解)
+
+#### Nginx
+- [Nginx 编译使用 IPv6](Note/Nginx/Nginx编译IPv6)
+- [Nginx 转发配置](Note/Nginx/Nginx转发配置)
 
 #### SVN
 - [SVN 基本操作](Note/SVN/SVN基本操作)
 
-#### Nginx
-- [Nginx 编译 IPv6](Note/Nginx/Nginx编译IPv6)
-- [Nginx 转发配置](Note/Nginx/Nginx转发配置)
-
-#### FFmpeg
-- [FFmpeg 安装方法](Note/FFmpeg/FFmpeg安装方法)
-- [FFmpeg 常用基本命令](Note/FFmpeg/FFmpeg常用基本命令)
-
-#### Linux
-- CentOS
-  - [CentOS 7 添加用户并授权](Note/Linux/CentOS/CentOS7添加用户并授权) 
-  - [CentOS 7 环境下部署 Typecho 并处理权限问题](Note/Linux/CentOS/CentOS7环境部署Typecho并处理权限问题)
-
 #### Windows
 - UWP
-  - [应用安装 Powershell 指令](Note/Windows/UWP/应用安装指令) 
+  - [UWP 应用安装指令](Note/Windows/UWP/应用安装指令)
