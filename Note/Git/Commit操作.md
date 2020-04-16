@@ -116,6 +116,48 @@ $ git rm -r <folder_name>
 
 
 
+### 完全删除某个敏感文件（包括在 commit 历史中）
+
+如果不小心上传了某个敏感文件（如含 token、ssh 的文件），采用 `git rm` 指令是无法彻底删除的。需要切换到项目主目录（注意**一定要切换到主目录**，否则会出现路径报错），假如要删除 `./dist/pass.ssh` 文件，输入下面完整的指令，（注意文件路径要**用完整的相对路径**）
+
+```bash
+$ git filter-branch --force --index-filter "git rm --cached --ignore-unmatch ./dist/pass.ssh" --prune-empty --tag-name-filter cat -- --all
+```
+
+执行，出现 WARNING，按 `Ctrl+C` 可中止操作，忽略则继续执行
+
+```bash
+WARNING: git-filter-branch has a glut of gotchas generating mangled history
+         rewrites.  Hit Ctrl-C before proceeding to abort, then use an
+         alternative filtering tool such as 'git filter-repo'
+         (https://github.com/newren/git-filter-repo/) instead.  See the
+         filter-branch manual page for more details; to squelch this warning,
+         set FILTER_BRANCH_SQUELCH_WARNING=1.
+Proceeding with filter-branch...
+
+Rewrite add40dc47521d1bdd957029e14abce2c50000000 (1/125) (0 seconds passed, remains 10 predicted)
+```
+
+等进度完成后会提示，已经删除的文件和发生更改的分支
+
+```bash
+rm 'dist/pass.ssh'
+
+Ref 'refs/heads/master' was rewritten
+Ref 'refs/remotes/origin/master' was rewritten
+WARNING: Ref 'refs/remotes/origin/gh-pages' is unchanged
+WARNING: Ref 'refs/remotes/origin/master' is unchanged
+
+```
+
+再强制推送到远程仓库，即可完全清除
+
+```bash
+$ git push --force
+```
+
+需要注意的是，该操作会删除指定文件的本地的版本，必要时请做好备份。
+
 ### Commit 提交其它信息
 
 #### 指定 commit 的时间戳
