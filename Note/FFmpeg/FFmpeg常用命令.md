@@ -194,7 +194,7 @@ $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -acodec copy -vcodec copy -
 
 #### 对直播流截图
 
-以下指令可以对直播流截图，但是由于直播时持续的，这种截图得到的指令发出时的图片
+以下指令可以对直播流截图，但是由于直播是持续的，截图得到的指令发出时的图片
 
 ```bash
 $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" "screenshot.jpg"
@@ -211,7 +211,7 @@ $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" "screenshot-%03d.jpg"
 $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -vf fps=0.1 "screenshot-%03d.jpg"
 ```
 
-有时候不需要输出大量的图片序列，要求截图在原来的文件基础上覆盖，可以设置`-update`参数
+有时候不需要输出大量的图片序列，而是在原来的文件基础上覆盖，可以设置`-update`参数
 
 ```bash
 $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -vf fps=0.1 -update 1 -y "screenshot.jpg"
@@ -239,14 +239,85 @@ $ ffmpeg -f gdigrab -framerate 25 -i title=Calculator "output.mkv"
 ```
 
 
+### 使用硬件加速
+
+如果电脑有独立显卡或某些显卡支持渲染加速，那么就可以用显卡对 FFmpeg 编码加速，加快视频编码的速度，减轻 CPU 的负担。
+
+对于 Windows 系统，可以在 PowerShell 中查看当前 FFmpeg 和设备支持的编码器、解码器
+
+```powershell
+PS ffmpeg -codecs | sls cuvid
+ DEV.LS h264                 H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (decoders: h264 h264_qsv h264_cuvid ) (
+encoders: libx264 libx264rgb h264_amf h264_nvenc h264_qsv nvenc nvenc_h264 )
+ DEV.L. hevc                 H.265 / HEVC (High Efficiency Video Coding) (decoders: hevc hevc_qsv hevc_cuvid )
+ (encoders: libx265 nvenc_hevc hevc_amf hevc_nvenc hevc_qsv )
+ DEVIL. mjpeg                Motion JPEG (decoders: mjpeg mjpeg_cuvid mjpeg_qsv ) (encoders: mjpeg mjpeg_qsv )
+ DEV.L. mpeg1video           MPEG-1 video (decoders: mpeg1video mpeg1_cuvid )
+ DEV.L. mpeg2video           MPEG-2 video (decoders: mpeg2video mpegvideo mpeg2_qsv mpeg2_cuvid ) (encoders: m
+peg2video mpeg2_qsv )
+ DEV.L. mpeg4                MPEG-4 part 2 (decoders: mpeg4 mpeg4_cuvid ) (encoders: mpeg4 libxvid )
+ D.V.L. vc1                  SMPTE VC-1 (decoders: vc1 vc1_qsv vc1_cuvid )
+ DEV.L. vp8                  On2 VP8 (decoders: vp8 libvpx vp8_cuvid vp8_qsv ) (encoders: libvpx )
+ DEV.L. vp9                  Google VP9 (decoders: vp9 libvpx-vp9 vp9_cuvid vp9_qsv ) (encoders: libvpx-vp9 vp
+9_qsv )
+```
+
+注意，要找编码器`encoder`用于编码，而非解码器`decoder`，如
+
+```
+(encoders: libx264 libx264rgb h264_amf h264_nvenc h264_qsv nvenc nvenc_h264 )
+```
+
+`nvenc`是 Nvidia 加速技术，`qsv`是 Intel 加速技术，假如选择`h264_qsv`，可以通过以下命令查看编码器详细的参数说明
+
+```powershell
+PS ffmpeg -h encoder=h264_qsv
+Encoder h264_qsv [H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10 (Intel Quick Sync Video acceleration)]:
+    General capabilities: delay hybrid
+    Threading capabilities: none
+    Supported pixel formats: nv12 p010le qsv
+h264_qsv encoder AVOptions:
+  -async_depth       <int>        E..V...... Maximum processing parallelism (from 1 to INT_MAX) (default 4)
+  -avbr_accuracy     <int>        E..V...... Accuracy of the AVBR ratecontrol (from 0 to INT_MAX) (default 0)
+  -avbr_convergence  <int>        E..V...... Convergence of the AVBR ratecontrol (from 0 to INT_MAX) (default 0)
+  -preset            <int>        E..V...... (from 1 to 7) (default medium)
+     veryfast        7            E..V......
+     faster          6            E..V......
+     fast            5            E..V......
+     medium          4            E..V......
+     slow            3            E..V......
+     slower          2            E..V......
+     veryslow        1            E..V......
+  -rdo               <int>        E..V...... Enable rate distortion optimization (from -1 to 1) (default -1)
+```
+
+编码视频时`-vcodec`选择对应的编码器即可，如
+
+```powershell
+PS ffmpeg -i ".\input.mp4" -vcodec h264_qsv -preset 2 "output.mp4"
+```
+
+
+
 ### 参考链接
 
 - FFmpeg Linux 命令 在线中文手册：<http://linux.51yip.com/search/ffmpeg>
+
 - <https://blog.csdn.net/achang21/article/details/49128785>
+
 - <https://ffmpeg.org/ffmpeg-bitstream-filters.html#aac_005fadtstoasc>
+
 - <https://blog.csdn.net/weiyuefei/article/details/68067944>
+
 - 关于精确拆分：<https://blog.csdn.net/matrix_laboratory/article/details/53157383>
+
 - 关于防止负时间戳设置的说明：<https://stackoverrun.com/cn/q/11295443>
+
 - FFmpeg 进度寻找时容易遇到的参数位置问题：<https://trac.ffmpeg.org/wiki/Seeking#Notes>
+
 - <https://segmentfault.com/q/1010000014772585>
+
+- <https://blog.csdn.net/qq_39575835/article/details/83826073>
+
+- <https://blog.csdn.net/qq_39575835/article/details/83826073>
 
