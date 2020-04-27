@@ -182,7 +182,7 @@ $ ffmpeg -i input.mpg -map 0:7 audio7.wav
 
 ### 流媒体相关
 
-#### 将 RTMP 流保存为视频
+#### 将 RTMP/m3u8 流保存为视频
 
 ```bash
 $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -acodec copy -vcodec copy -absf aac_adtstoasc "output.mp4"
@@ -191,6 +191,34 @@ $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -acodec copy -vcodec copy -
 - `-absf aac_adtstoasc` - 流媒体参数转换，建议保留
 
 > aac_adtstoasc 是 将 AAC 编码器编码后的原始码流（ADTS 头 + ES 流）封装为 MP4、FLV 或 MOV 等格式时，需要先将 ADTS 头转换为 MPEG-4 AudioSpecficConfig（将音频相关编解码参数提取出来），并将原始码流中的 ADTS 头去掉（只剩下 ES 流）。相反，从 MP4 或者 FLV 或者 MOV 等格式文件中解封装出 AAC 码流（只有 ES 流）时，需要在解析出的 AAC 码流前添加 ADTS 头（含音频相关编解码参数）。
+
+#### 对直播流截图
+
+以下指令可以对直播流截图，但是由于直播时持续的，这种截图得到的指令发出时的图片
+
+```bash
+$ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" "screenshot.jpg"
+```
+如果要连续截图需要在输出图片名中指定连续格式，如`%03d`表示从命名从`001`开始，不足3位以0补齐
+```bash
+$ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" "screenshot-%03d.jpg"
+```
+需要注意的是连续截图是以视频源的每一帧为单位截图，因此会产生大量图片
+
+如果只是要间隔几秒截图可以用视频滤镜调节帧率  `-vf fps=0.1`，这里`fps=0.1`的效果就是每 10 秒截图一次
+
+```bash
+$ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -vf fps=0.1 "screenshot-%03d.jpg"
+```
+
+有时候不需要输出大量的图片序列，要求截图在原来的文件基础上覆盖，可以设置`-update`参数
+
+```bash
+$ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -vf fps=0.1 -update 1 -y "screenshot.jpg"
+```
+
+- `-update 1` - 更新（覆盖）输出文件，注意参数值 1 是必须填写的，是布尔值表示该参数有效
+- `-y` - 直接覆盖同名文件不再询问
 
 
 ### 屏幕录制
