@@ -27,6 +27,7 @@
 - [Python 时间相关用法](Code/Python/时间相关)
 
 #### SQL
+- [SQL 配置语句](Code/SQL/SQL配置语句)
 - [SQL 删除语句](Code/SQL/SQL删除语句)
 - [SQL 更新语句](Code/SQL/SQL更新语句)
 - [SQL 查询语句](Code/SQL/SQL查询语句)
