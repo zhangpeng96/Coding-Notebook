@@ -297,7 +297,17 @@ h264_qsv encoder AVOptions:
 PS ffmpeg -i ".\input.mp4" -vcodec h264_qsv -preset 2 "output.mp4"
 ```
 
+### 视频错误修正
 
+#### 时间戳错误修正
+
+由于可能的各种意外，视频可能会出现时间戳错误，如5分钟长的视频进度条显示有30分钟，但有效的内容只有原始的5分钟内容，这可能是因为视频在推流或转码时时间戳的写入发生错误。
+
+可以对视频进行非二次编码的容器转换修复问题，如下面的指令，将 MP4 容器转换为 H264
+
+```bash
+$ ffmpeg -i "video.mp4" -an -vcodec copy "video_fixed.h264"
+```
 
 ### 参考链接
 
