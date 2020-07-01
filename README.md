@@ -45,7 +45,7 @@
 - [GitHub 常用操作](Note/Git/GitHub常用操作)
 - [Tag 操作](Note/Git/Tag操作)
 - [使用 SSH 密钥登录 Git 托管平台](Note/Git/使用SSH密钥登录)
-- 命令
+- [常见问题](Note/Git/常见问题)
 
 #### Linux
 - CentOS
