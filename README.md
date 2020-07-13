@@ -42,6 +42,7 @@
 #### Git
 - [Branch 操作](Note/Git/Branch操作)
 - [Commit 操作](Note/Git/Commit操作)
+- [Clone 操作](Note/Git/Clone)
 - [GitHub 常用操作](Note/Git/GitHub常用操作)
 - [Tag 操作](Note/Git/Tag操作)
 - [使用 SSH 密钥登录 Git 托管平台](Note/Git/使用SSH密钥登录)
