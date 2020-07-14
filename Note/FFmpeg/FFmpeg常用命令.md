@@ -6,6 +6,7 @@
 - `-y` - 覆盖输出文件
 
 
+
 ### 格式转换
 
 #### FLV 转换为 MP4
@@ -46,6 +47,7 @@ $ ffmpeg -i "input.mkv" -c copy "output.mp4"
 ```
 
 
+
 ### 时间调整
 
 #### 剪切视频（无损）
@@ -84,6 +86,7 @@ $ ffmpeg -ss 00:22:23 -accurate_seek -i "input.mp4" -t 00:02:50 -c:v copy -c:a c
 - `-avoid_negative_ts 1` - 由于视频通常是帧间编码，某一帧依赖于其它帧的解码，因此当直接复制视频流时可能会将依赖的帧剪入，设置该项为1可以避免这些问题
 
 
+
 ### 视频画面调整
 
 #### 无损旋转视频
@@ -93,6 +96,7 @@ $ ffmpeg -ss 00:22:23 -accurate_seek -i "input.mp4" -t 00:02:50 -c:v copy -c:a c
 ```bash
 $ ffmpeg -i "input.mp4" -metadata:s:v rotate="90" -c:v copy -c:a copy "output.mp4"
 ```
+
 
 
 ### 字幕相关
@@ -117,6 +121,7 @@ $ ffmpeg -i "input.mp4" -vcodec libx264 -preset fast -crf 23 -vf "ass=input.ass,
 - `-preset` - 编码速度，可选参数值如：`ultrafast` `superfast` `veryfast` `faster` `fast` `medium` `slow` `slower` `veryslow` `placebo`， 默认值为`medium`，编码速度越慢文件大小会越小
 
 - `-crf` - 固定帧率 (constant rate factor)，无损：`0`、缺省值：`23`、最差：`51`、 一般选`18~28` 往往选`18`接近无损
+
 
 
 ### 合并或提取音视频、字幕等轨道
@@ -179,6 +184,25 @@ $ ffmpeg -i input.mpg -map 0:4 audio4.wav
 $ ffmpeg -i input.mpg -map 0:7 audio7.wav
 ```
 
+#### 将图片和音频合成为视频
+
+```bash
+$ ffmpeg -f image2 -i "image.jpg" -i "audio.aac" -acodec copy "output.mp4"
+```
+
+但是这种方法转换后视频轨大概率是无效的，比如b站上传后转码失败，因此建议使用下面的方法：
+
+```bash
+$ ffmpeg -r 15 -f image2 -loop 1 -i "image.jpg" -i "audio.aac" -acodec copy -t 442 "output.mp4"
+```
+
+- `-r` - 转换视频的帧率，默认为`25`
+- `-loop 1` - 因为只有一张图片所以必须加入这个参数
+- `-t` - 转换成的视频持续时长（单位是秒），必须指定该值，否则会无限制生成视频
+
+如果要用多图片组合成视频，输入路径可以用占位符`image%03d.jpg`
+
+
 
 ### 流媒体相关
 
@@ -221,6 +245,7 @@ $ ffmpeg -i "rtmp://192.168.10.103:1935/live/stream" -vf fps=0.1 -update 1 -y "s
 - `-y` - 直接覆盖同名文件不再询问
 
 
+
 ### 屏幕录制
 
 #### 录制当前屏幕
@@ -237,6 +262,7 @@ $ ffmpeg -f gdigrab -framerate 10 -i desktop "output.mkv"
 ```bash
 $ ffmpeg -f gdigrab -framerate 25 -i title=Calculator "output.mkv"
 ```
+
 
 
 ### 使用硬件加速
@@ -297,6 +323,8 @@ h264_qsv encoder AVOptions:
 PS ffmpeg -i ".\input.mp4" -vcodec h264_qsv -preset 2 "output.mp4"
 ```
 
+
+
 ### 视频错误修正
 
 #### 时间戳错误修正
@@ -309,25 +337,19 @@ PS ffmpeg -i ".\input.mp4" -vcodec h264_qsv -preset 2 "output.mp4"
 $ ffmpeg -i "video.mp4" -an -vcodec copy "video_fixed.h264"
 ```
 
+
+
 ### 参考链接
 
 - FFmpeg Linux 命令 在线中文手册：<http://linux.51yip.com/search/ffmpeg>
-
 - <https://blog.csdn.net/achang21/article/details/49128785>
-
 - <https://ffmpeg.org/ffmpeg-bitstream-filters.html#aac_005fadtstoasc>
-
 - <https://blog.csdn.net/weiyuefei/article/details/68067944>
-
 - 关于精确拆分：<https://blog.csdn.net/matrix_laboratory/article/details/53157383>
-
 - 关于防止负时间戳设置的说明：<https://stackoverrun.com/cn/q/11295443>
-
 - FFmpeg 进度寻找时容易遇到的参数位置问题：<https://trac.ffmpeg.org/wiki/Seeking#Notes>
-
 - <https://segmentfault.com/q/1010000014772585>
-
 - <https://blog.csdn.net/qq_39575835/article/details/83826073>
-
 - <https://blog.csdn.net/qq_39575835/article/details/83826073>
+- <https://blog.csdn.net/StimmerLove/article/details/89405064>
 
