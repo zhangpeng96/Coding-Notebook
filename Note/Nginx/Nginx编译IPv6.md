@@ -108,3 +108,52 @@ $ service nginx start
 ```
 
 
+
+### Nginx 配置修改
+
+在完成 DNS 解析的 AAAA 配置后，还需要修改服务器配置文件，以同时支持 IPv4 和 IPv6。Nginx 需要在`conf`配置文件中加入`listen [::]:80 ipv6only=on;`（其中较新版本的 Nginx 默认开启`ipv6only`）
+
+```nginx
+server {
+    listen 80;
+    listen [::]:80 ipv6only=on;
+    server_name _;
+    root /data/www;
+}
+```
+
+```nginx
+server {
+    listen 443;
+    listen [::]:443 ipv6only=on;
+    server_name _;
+    ssl on;
+    root /data/www;
+}
+```
+
+
+
+### Oneinstack 配置方法
+
+在 Oneinstack 的`include/`目录下找到`nginx.sh`，修改第31行，添加`--with-ipv6`参数，
+
+```shell
+  ./configure --prefix=${nginx_install_dir} --user=${run_user} --group=${run_group} --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-http_ssl_module --with-http_gzip_static_module --with-http_realip_module --with-http_flv_module --with-http_mp4_module --with-ipv6 --with-openssl=../openssl-${openssl11_ver} --with-pcre=../pcre-${pcre_ver} --with-pcre-jit --with-ld-opt='-ljemalloc' ${nginx_modules_options}
+```
+
+保存，重新安装即可。
+
+
+
+### IPv6 可用测试
+
+https://ipv6-test.com/validate.php
+
+
+
+### 参考来源
+
+- https://www.cnblogs.com/pinghengxing/p/10034200.html
+
+- https://blog.csdn.net/shenxianfeng/article/details/72859970
