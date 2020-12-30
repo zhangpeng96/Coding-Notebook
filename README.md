@@ -53,6 +53,8 @@
 - CentOS
   - [CentOS 7 添加用户并授权 root 权限](Note/Linux/CentOS/CentOS7添加用户并授权)
   - [CentOS 7 环境下部署 Typecho 并处理权限问题](Note/Linux/CentOS/CentOS7部署Typecho并限权)
+- Debian
+  - [Debian 常用配置](Note/Linux/Debian/Debian常用配置)
 - Kernel
   - [Linux 系统权限详解](Note/Linux/Kernel/Linux权限详解)
 
