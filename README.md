@@ -50,6 +50,8 @@
 - [常见问题](Note/Git/常见问题)
 
 #### Linux
+
+- [Linux 常用文件操作](Note/Linux/Linux常用文件操作)
 - CentOS
   - [CentOS 7 添加用户并授权 root 权限](Note/Linux/CentOS/CentOS7添加用户并授权)
   - [CentOS 7 环境下部署 Typecho 并处理权限问题](Note/Linux/CentOS/CentOS7部署Typecho并限权)
