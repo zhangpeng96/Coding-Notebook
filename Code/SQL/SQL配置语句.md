@@ -75,8 +75,24 @@ SHOW GRANTS FOR 'username'@'host'
 REVOKE privilege ON databasename.tablename FROM 'username'@'host';
 ```
 
+### MySQL 备份
+
+#### 备份所有数据库
+
+```shell
+mysqldump -u root -p ``--all-databases > E:/all.sql
+```
+
+要将存储过程和事件也包含，请使用如下语句：
+
+```shell
+mysqldump -u root -p ``--all-databases --routines --events > E:/all.sql
+```
+
 
 
 ### 参考来源
 
 - <https://www.cnblogs.com/zhongyehai/p/10695659.html>
+- <https://www.jb51.net/article/180871.htm>
+
