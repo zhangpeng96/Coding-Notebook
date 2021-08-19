@@ -158,6 +158,43 @@ $ git push --force
 
 需要注意的是，该操作会删除指定文件的本地的版本，必要时请做好备份。
 
+### 重命名或修改文件夹路径
+
+对文件重命名或修改文件、文件夹的路径可以用`git mv`命令，避免被认为是`deleted`后`added`
+
+```shell
+$ git mv "source_pathname" "destination_pathname"
+```
+
+这种情况下`COMMIT_EDITMSG`会显示为：
+
+```git
+# Changes to be committed:
+#	renamed:    "project/a4-1.html" -> "Projects/a4-1.html"
+#	renamed:    "project/a4-no-border.html" -> "Projects/a4-no-border.html"
+```
+
+同步到 GitHub 上也会成功建立起索引。
+
+需要注意的是，在 Windows/Mac 环境下仅仅更改文件或文件名的大小写可能会引发错误（无法重命名）。而且 Git 默认对大小写不敏感，如果要更改可以设置
+
+```shell
+$ git config core.ignorecase false
+```
+
+或者更改`config`文件
+
+```git
+[core]
+	ignorecase = false
+```
+
+但是，即使这样设置后，在 Windows 环境下更改文件或文件夹名仍会出错，一般可以先更改为其它名称，再改成最终要修改的名称，这样避免 Windows 系统将大小写不同的文件夹认为是同一文件夹。然而同步到 GitHub 上很可能会出现原文件名和现文件名共存的情况，引发混乱。
+
+所以，针对这种仅仅修改文件或文件夹名称大小写的做法，**推荐改一个名称**。
+
+参考：[git mv 解决文件名大小写不敏感问题_zwkkkk1的博客-CSDN博客_git mv 大小写](https://blog.csdn.net/zwkkkk1/article/details/94154727)
+
 ### Commit 提交其它信息
 
 #### 指定 commit 的时间戳
